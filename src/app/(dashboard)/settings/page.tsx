@@ -196,41 +196,41 @@ export default function SettingsPage() {
                         {activeTab === 'general' && (
                             <div className="space-y-8">
                                 {/* Workspace Details Form Card */}
-                                <div className="p-8 rounded-2xl border border-zinc-200/50 bg-white/40 shadow-sm space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                <div className="p-8 rounded-2xl border border-zinc-200/50 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40 shadow-sm space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
                                     <div className="space-y-1">
-                                        <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-widest">Workspace Details</h3>
-                                        <p className="text-xs text-zinc-500">Basic identification and contact information for this organization.</p>
+                                        <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Workspace Details</h3>
+                                        <p className="text-xs text-zinc-500 dark:text-zinc-400">Basic identification and contact information for this organization.</p>
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                                         <div className="space-y-6">
                                             <div className="space-y-2 group">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1 transition-colors group-focus-within:text-primary">Company Name</label>
+                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 ml-1 transition-colors group-focus-within:text-primary">Company Name</label>
                                                 <input
                                                     type="text"
                                                     defaultValue="Acme Corp"
                                                     placeholder="Enter legal company name..."
-                                                    className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm"
+                                                    className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm"
                                                 />
                                             </div>
 
                                             <div className="space-y-2 group">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1 transition-colors group-focus-within:text-primary">Support Email</label>
+                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 ml-1 transition-colors group-focus-within:text-primary">Support Email</label>
                                                 <input
                                                     type="email"
                                                     defaultValue="support@acmecorp.com"
                                                     placeholder="e.g. support@company.com"
-                                                    className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm"
+                                                    className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm"
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="space-y-6">
                                             <div className="space-y-2 group">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1 transition-colors group-focus-within:text-primary">Default Timezone</label>
+                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 ml-1 transition-colors group-focus-within:text-primary">Default Timezone</label>
                                                 <div className="relative">
                                                     <select
-                                                        className="w-full bg-white border border-zinc-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm appearance-none cursor-pointer"
+                                                        className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all shadow-sm appearance-none cursor-pointer"
                                                         defaultValue="utc"
                                                     >
                                                         <option value="pst">Pacific Standard Time (PT)</option>
@@ -246,29 +246,29 @@ export default function SettingsPage() {
                                             </div>
 
                                             <div className="space-y-2 group">
-                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Workspace ID</label>
+                                                <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 ml-1">Workspace ID</label>
                                                 <input
                                                     type="text"
                                                     readOnly
                                                     value="VYLERA-X-00129"
-                                                    className="w-full bg-zinc-50/50 border border-zinc-200 rounded-xl px-4 py-3 text-sm font-mono text-zinc-400 cursor-not-allowed"
+                                                    className="w-full bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm font-mono text-zinc-400 cursor-not-allowed"
                                                 />
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Separation Line */}
-                                    <div className="h-px bg-zinc-100 w-full" />
+                                    <div className="h-px bg-zinc-100 dark:bg-zinc-800 w-full" />
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                         <div className="space-y-4">
-                                            <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 ml-1">Workspace Logo</label>
+                                            <label className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400 ml-1">Workspace Logo</label>
                                             <div className="flex items-center gap-6">
-                                                <div className="h-20 w-20 rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white ring-8 ring-white shadow-xl overflow-hidden group">
+                                                <div className="h-20 w-20 rounded-3xl bg-zinc-900 dark:bg-zinc-950 border border-zinc-800 dark:border-zinc-700 flex items-center justify-center text-white ring-8 ring-white dark:ring-zinc-900 shadow-xl overflow-hidden group">
                                                     <Box className="h-10 w-10 transition-transform group-hover:scale-110" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <button className="px-5 py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 rounded-xl hover:bg-zinc-50 transition-all active:scale-95 shadow-sm">
+                                                    <button className="px-5 py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 dark:border-zinc-800 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all active:scale-95 shadow-sm text-foreground">
                                                         Upload New
                                                     </button>
                                                     <p className="text-[10px] text-zinc-400">PNG or SVG. Max size 2MB.</p>
@@ -277,18 +277,18 @@ export default function SettingsPage() {
                                         </div>
                                     </div>
 
-                                    <div className="pt-8 border-t border-zinc-100 flex items-center justify-between">
+                                    <div className="pt-8 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
                                         <div className="space-y-1 text-left">
-                                            <p className="text-sm font-bold text-zinc-900">Delete Workspace</p>
-                                            <p className="text-xs text-zinc-500">This action is permanent and cannot be undone.</p>
+                                            <p className="text-sm font-bold text-zinc-900 dark:text-zinc-100">Delete Workspace</p>
+                                            <p className="text-xs text-zinc-500 dark:text-zinc-400">This action is permanent and cannot be undone.</p>
                                         </div>
-                                        <button className="px-6 py-2.5 text-xs font-bold border border-rose-200 text-rose-600 bg-rose-50/50 rounded-xl hover:bg-rose-100 transition-all active:scale-95">
+                                        <button className="px-6 py-2.5 text-xs font-bold border border-rose-200 dark:border-rose-900/50 text-rose-600 bg-rose-50/50 dark:bg-rose-950/20 rounded-xl hover:bg-rose-100 dark:hover:bg-rose-950/40 transition-all active:scale-95">
                                             Delete Workspace
                                         </button>
                                     </div>
 
                                     {/* Form Actions */}
-                                    <div className="pt-8 flex justify-end items-center gap-3 border-t border-zinc-100/50">
+                                    <div className="pt-8 flex justify-end items-center gap-3 border-t border-zinc-100/50 dark:border-zinc-800">
                                         <button
                                             disabled
                                             className="px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest text-zinc-400 cursor-not-allowed opacity-50"
@@ -303,14 +303,14 @@ export default function SettingsPage() {
                                 </div>
 
                                 {/* Data Integrations Section */}
-                                <div className="p-8 rounded-2xl border border-zinc-200/50 bg-white/40 shadow-sm space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                                <div className="p-8 rounded-2xl border border-zinc-200/50 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40 shadow-sm space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-700">
                                     <div className="flex items-center justify-between">
                                         <div className="space-y-1">
-                                            <div className="inline-flex items-center px-2 py-0.5 rounded bg-blue-50 text-blue-600 text-[8px] font-bold uppercase tracking-[0.2em] mb-1 ring-1 ring-blue-200/50">Enterprise</div>
-                                            <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-widest">Data Integrations</h3>
-                                            <p className="text-xs text-zinc-500">Connect external data sources to enable single-source intelligence.</p>
+                                            <div className="inline-flex items-center px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 text-[8px] font-bold uppercase tracking-[0.2em] mb-1 ring-1 ring-blue-200/50 dark:ring-blue-900/50">Enterprise</div>
+                                            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Data Integrations</h3>
+                                            <p className="text-xs text-zinc-500 dark:text-zinc-400">Connect external data sources to enable single-source intelligence.</p>
                                         </div>
-                                        <div className="p-2 rounded-xl bg-zinc-50 border border-zinc-100">
+                                        <div className="p-2 rounded-xl bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700">
                                             <Database className="h-5 w-5 text-zinc-400" />
                                         </div>
                                     </div>
@@ -318,22 +318,22 @@ export default function SettingsPage() {
                                     {/* Integration Grid */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                         {/* Legacy Database */}
-                                        <div className="p-6 rounded-2xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-all group">
+                                        <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-all group">
                                             <div className="flex items-start justify-between mb-4">
-                                                <div className="h-10 w-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors">
+                                                <div className="h-10 w-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors">
                                                     <Database className="h-5 w-5" />
                                                 </div>
-                                                <div className="h-2 w-2 rounded-full bg-zinc-200" />
+                                                <div className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-700" />
                                             </div>
-                                            <h4 className="text-sm font-bold text-zinc-900 mb-1">Legacy Database</h4>
-                                            <p className="text-[11px] text-zinc-500 leading-relaxed mb-6">Synchronize legacy SQL records with real-time stream processing.</p>
-                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 rounded-lg hover:bg-zinc-50 transition-all active:scale-[0.98]">
+                                            <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">Legacy Database</h4>
+                                            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">Synchronize legacy SQL records with real-time stream processing.</p>
+                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 dark:border-zinc-800 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all active:scale-[0.98] text-foreground">
                                                 Connect
                                             </button>
                                         </div>
 
                                         {/* POS System */}
-                                        <div className="p-6 rounded-2xl border border-primary/20 bg-primary/[0.02] shadow-sm hover:shadow-md transition-all group ring-1 ring-primary/10">
+                                        <div className="p-6 rounded-2xl border border-primary/20 bg-primary/[0.02] dark:bg-primary/[0.05] shadow-sm hover:shadow-md transition-all group ring-1 ring-primary/10">
                                             <div className="flex items-start justify-between mb-4">
                                                 <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary transition-colors">
                                                     <Monitor className="h-5 w-5" />
@@ -343,31 +343,31 @@ export default function SettingsPage() {
                                                     <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                                                 </div>
                                             </div>
-                                            <h4 className="text-sm font-bold text-zinc-900 mb-1">POS System</h4>
-                                            <p className="text-[11px] text-zinc-500 leading-relaxed mb-6">Real-time terminal inventory and transaction monitoring.</p>
-                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 transition-all active:scale-[0.98] shadow-lg shadow-zinc-200">
+                                            <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">POS System</h4>
+                                            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">Real-time terminal inventory and transaction monitoring.</p>
+                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest bg-zinc-900 dark:bg-zinc-100 dark:text-zinc-950 text-white rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-[0.98] shadow-lg shadow-zinc-200 dark:shadow-none">
                                                 Manage
                                             </button>
                                         </div>
 
                                         {/* Cloud Storage */}
-                                        <div className="p-6 rounded-2xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-all group">
+                                        <div className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-all group">
                                             <div className="flex items-start justify-between mb-4">
-                                                <div className="h-10 w-10 rounded-xl bg-zinc-100 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors">
+                                                <div className="h-10 w-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-primary transition-colors">
                                                     <Box className="h-5 w-5" />
                                                 </div>
-                                                <div className="h-2 w-2 rounded-full bg-zinc-200" />
+                                                <div className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-700" />
                                             </div>
-                                            <h4 className="text-sm font-bold text-zinc-900 mb-1">Cloud Storage</h4>
-                                            <p className="text-[11px] text-zinc-500 leading-relaxed mb-6">Backup orchestration across distributed S3-compatible nodes.</p>
-                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 rounded-lg hover:bg-zinc-50 transition-all active:scale-[0.98]">
+                                            <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">Cloud Storage</h4>
+                                            <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">Backup orchestration across distributed S3-compatible nodes.</p>
+                                            <button className="w-full py-2 text-[10px] font-bold uppercase tracking-widest border border-zinc-200 dark:border-zinc-800 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all active:scale-[0.98] text-foreground">
                                                 Connect
                                             </button>
                                         </div>
 
                                         {/* Add Integration Placeholder */}
-                                        <button className="p-6 rounded-2xl border border-dashed border-zinc-200 flex flex-col items-center justify-center text-center group hover:border-primary/50 hover:bg-primary/5 transition-all text-zinc-400 hover:text-primary min-h-[160px]">
-                                            <div className="h-10 w-10 rounded-full bg-zinc-50 group-hover:bg-primary/10 flex items-center justify-center mb-3 transition-colors">
+                                        <button className="p-6 rounded-2xl border border-dashed border-zinc-200 dark:border-zinc-800 flex flex-col items-center justify-center text-center group hover:border-primary/50 hover:bg-primary/5 transition-all text-zinc-400 hover:text-primary min-h-[160px]">
+                                            <div className="h-10 w-10 rounded-full bg-zinc-50 dark:bg-zinc-800 group-hover:bg-primary/10 flex items-center justify-center mb-3 transition-colors">
                                                 <Globe className="h-5 w-5" />
                                             </div>
                                             <p className="text-[10px] font-bold uppercase tracking-widest">Add New Node</p>

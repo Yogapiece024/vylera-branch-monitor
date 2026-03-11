@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import {
     User,
     Shield,
@@ -10,6 +11,7 @@ import {
     Box,
     Monitor,
     Globe,
+    Laptop,
     ChevronRight,
     Save
 } from 'lucide-react';
@@ -31,11 +33,23 @@ const SETTINGS_SECTIONS = [
             { id: 'security', label: 'Security', icon: Key },
             { id: 'notifications', label: 'Notifications', icon: Bell },
         ]
+    },
+    {
+        title: 'Preferences',
+        items: [
+            { id: 'appearance', label: 'Appearance', icon: Monitor },
+        ]
     }
 ];
 
 export default function SettingsPage() {
     const [activeTab, setActiveTab] = useState('general');
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const activeItem = SETTINGS_SECTIONS.flatMap(s => s.items).find(c => c.id === activeTab);
 
@@ -119,6 +133,66 @@ export default function SettingsPage() {
 
                     {/* Main Content Render */}
                     <div className="p-8">
+                        {activeTab === 'appearance' && (
+                            <div className="space-y-8">
+                                <div className="p-8 rounded-2xl border border-zinc-200/50 bg-white/40 dark:bg-zinc-900/40 shadow-sm space-y-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                    <div className="space-y-1">
+                                        <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Appearance</h3>
+                                        <p className="text-xs text-zinc-500 dark:text-zinc-400">Customize how the platform looks on your device.</p>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        {[
+                                            { id: 'light', label: 'Light', icon: Globe },
+                                            { id: 'dark', label: 'Dark', icon: Monitor },
+                                            { id: 'system', label: 'System', icon: Laptop },
+                                        ].map((t) => {
+                                            const Icon = t.icon;
+                                            const isActive = mounted && theme === t.id;
+                                            if (!mounted) return (
+                                                <div
+                                                    key={t.id}
+                                                    className="flex flex-col items-center gap-4 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 opacity-50"
+                                                >
+                                                    <div className="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
+                                                        <Icon className="h-6 w-6" />
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <p className="text-sm font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-400">{t.label}</p>
+                                                    </div>
+                                                </div>
+                                            );
+                                            return (
+                                                <button
+                                                    key={t.id}
+                                                    onClick={() => setTheme(t.id)}
+                                                    className={cn(
+                                                        "relative flex flex-col items-center gap-4 p-6 rounded-2xl border transition-all duration-300 group",
+                                                        isActive
+                                                            ? "bg-primary/5 border-primary shadow-sm"
+                                                            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"
+                                                    )}
+                                                >
+                                                    <div className={cn(
+                                                        "p-3 rounded-xl transition-colors",
+                                                        isActive ? "bg-primary/20 text-primary" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300"
+                                                    )}>
+                                                        <Icon className="h-6 w-6" />
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <p className={cn("text-sm font-bold uppercase tracking-widest", isActive ? "text-primary" : "text-zinc-600 dark:text-zinc-400")}>{t.label}</p>
+                                                    </div>
+                                                    {isActive && (
+                                                        <div className="absolute top-3 right-3 h-2 w-2 rounded-full bg-primary" />
+                                                    )}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                         {activeTab === 'general' && (
                             <div className="space-y-8">
                                 {/* Workspace Details Form Card */}
@@ -303,7 +377,7 @@ export default function SettingsPage() {
                             </div>
                         )}
 
-                        {activeTab !== 'general' && activeItem && (
+                        {activeTab !== 'general' && activeTab !== 'appearance' && activeItem && (
                             <div className="mt-12 p-24 rounded-3xl border border-dashed border-zinc-200 flex flex-col items-center justify-center text-center opacity-70">
                                 {React.createElement(activeItem.icon, { className: "h-12 w-12 text-zinc-300 mb-6" })}
                                 <h3 className="text-lg font-bold text-zinc-900 tracking-tight">Configuration Under Review</h3>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import {
     LayoutDashboard,
@@ -58,12 +59,12 @@ export function Shell({ children }: ShellProps) {
                 isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
             )}>
                 <div className="flex h-14 items-center justify-between px-6 border-b border-border">
-                    <a href="/" className="flex items-center gap-2 group">
+                    <Link href="/" className="flex items-center gap-2 group">
                         <div className="h-6 w-6 bg-foreground rounded-sm flex items-center justify-center transition-transform group-hover:scale-105">
                             <GitBranch className="h-4 w-4 text-background" />
                         </div>
                         <span className="font-bold text-sm tracking-tight uppercase">Vylera</span>
-                    </a>
+                    </Link>
                     <button
                         className="lg:hidden p-1 hover:bg-secondary rounded-md"
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -77,7 +78,7 @@ export function Shell({ children }: ShellProps) {
                         {NAV_ITEMS.map((item) => {
                             const isActive = pathname === item.href;
                             return (
-                                <a
+                                <Link
                                     key={item.label}
                                     href={item.href}
                                     className={cn(
@@ -90,7 +91,7 @@ export function Shell({ children }: ShellProps) {
                                 >
                                     <item.icon className={cn("h-4 w-4", isActive && "text-primary")} />
                                     {item.label}
-                                </a>
+                                </Link>
                             );
                         })}
                     </nav>
@@ -98,7 +99,7 @@ export function Shell({ children }: ShellProps) {
 
                 <div className="px-3 pb-4">
                     <nav className="space-y-1">
-                        <a
+                        <Link
                             href="/settings"
                             className={cn(
                                 'flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-all duration-200',
@@ -110,7 +111,7 @@ export function Shell({ children }: ShellProps) {
                         >
                             <Settings className={cn("h-4 w-4", pathname === '/settings' && "text-primary")} />
                             Settings
-                        </a>
+                        </Link>
                     </nav>
                 </div>
 

@@ -2,17 +2,11 @@
 
 import React from 'react';
 import {
-  GitBranch,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
-  ArrowUpRight,
   Activity,
   Zap,
   Server,
   Filter,
-  Download,
-  MoreHorizontal
+  Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

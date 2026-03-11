@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { GitBranch, Lock, Mail, ArrowRight, Loader2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 export default function LoginPage() {
     const router = useRouter();

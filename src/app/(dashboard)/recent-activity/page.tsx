@@ -32,7 +32,7 @@ export default function ActivityPage() {
             </div>
 
             {/* Control Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border bg-card/30 backdrop-blur-md shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border dark:border-zinc-800 bg-card/30 dark:bg-zinc-900/30 backdrop-blur-md shadow-sm">
                 <div className="relative w-full sm:max-w-md group">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground group-focus-within:text-foreground transition-colors" />
                     <input
@@ -40,7 +40,7 @@ export default function ActivityPage() {
                         placeholder="Search by actor, action, or target..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full rounded-lg border border-border/50 bg-secondary/20 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30"
+                        className="w-full rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 text-foreground"
                     />
                 </div>
 
@@ -50,25 +50,25 @@ export default function ActivityPage() {
                         <select
                             value={severityFilter}
                             onChange={(e) => setSeverityFilter(e.target.value)}
-                            className="w-full appearance-none rounded-lg border border-border/50 bg-secondary/20 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer"
+                            className="w-full appearance-none rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground"
                         >
-                            <option value="All">All Severities</option>
-                            <option value="success">Success</option>
-                            <option value="info">Info</option>
-                            <option value="warning">Warning</option>
-                            <option value="critical">Critical</option>
+                            <option value="All" className="dark:bg-zinc-950">All Severities</option>
+                            <option value="success" className="dark:bg-zinc-950">Success</option>
+                            <option value="info" className="dark:bg-zinc-950">Info</option>
+                            <option value="warning" className="dark:bg-zinc-950">Warning</option>
+                            <option value="critical" className="dark:bg-zinc-950">Critical</option>
                         </select>
                         <ChevronDown className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
                     </div>
 
-                    <button className="p-2.5 rounded-lg border border-border/50 bg-secondary/20 hover:bg-secondary/40 transition-colors text-muted-foreground hover:text-foreground">
+                    <button className="p-2.5 rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 hover:bg-secondary/40 dark:hover:bg-zinc-800/60 transition-colors text-muted-foreground hover:text-foreground">
                         <RefreshCw className="h-4 w-4" />
                     </button>
                 </div>
             </div>
 
             {/* Timeline Container */}
-            <div className="relative rounded-xl border border-border bg-zinc-900 shadow-xl overflow-hidden min-h-[600px] animate-in fade-in zoom-in-95 duration-700">
+            <div className="relative rounded-xl border border-border bg-card/30 backdrop-blur-sm shadow-xl overflow-hidden min-h-[600px] animate-in fade-in zoom-in-95 duration-700">
                 {/* Vertical Timeline Accent line */}
                 <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent hidden sm:block" />
 
@@ -78,24 +78,24 @@ export default function ActivityPage() {
                             <div key={log.id} className="relative pl-12 sm:pl-16 group">
                                 {/* Dot on Timeline */}
                                 <div className={cn(
-                                    "absolute left-[29px] top-6 h-2.5 w-2.5 rounded-full z-10 ring-[6px] ring-zinc-900 transition-all duration-300 group-hover:scale-125",
+                                    "absolute left-[29px] top-6 h-2.5 w-2.5 rounded-full z-10 ring-[6px] ring-card transition-all duration-300 group-hover:scale-125",
                                     log.severity === 'success' && "bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]",
                                     log.severity === 'warning' && "bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.3)]",
-                                    log.severity === 'critical' && "bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]", // BUG: Should be rose-500
+                                    log.severity === 'critical' && "bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.3)]",
                                     log.severity === 'info' && "bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                                 )} />
 
                                 {/* Content Stack */}
                                 <div className="flex flex-col gap-1.5 transition-all duration-300 group-hover:translate-x-1">
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
                                         {log.timestamp}
                                     </span>
 
                                     <div className="flex flex-wrap items-baseline gap-x-2">
-                                        <span className="text-sm font-bold text-white tracking-tight">
+                                        <span className="text-sm font-bold text-foreground tracking-tight">
                                             {log.actor}
                                         </span>
-                                        <span className="text-sm text-zinc-400">
+                                        <span className="text-sm text-muted-foreground">
                                             {log.action}
                                         </span>
                                         <span className="text-sm font-bold text-primary">

@@ -10,8 +10,7 @@ import {
     Tooltip,
     ResponsiveContainer,
     ComposedChart,
-    Bar,
-    Cell
+    Bar
 } from 'recharts';
 import { TRAFFIC_MOCK_DATA, TrafficDataPoint } from '@/lib/utils/mockData';
 
@@ -20,8 +19,18 @@ interface RevenueChartProps {
     type?: 'area' | 'candlestick';
 }
 
-const CandlestickShape = (props: any) => {
-    const { x, y, width, height, open, close, high, low, fill } = props;
+interface CandlestickShapeProps {
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    open?: number;
+    close?: number;
+    payload?: TrafficDataPoint;
+}
+
+const CandlestickShape = (props: CandlestickShapeProps) => {
+    const { x = 0, y = 0, width = 0, height = 0, open = 0, close = 0 } = props;
     const isUp = close > open;
     const color = isUp ? '#10b981' : '#ef4444'; // Green for up, Red for down
     const wickColor = isUp ? '#10b981' : '#ef4444';
@@ -37,7 +46,8 @@ const CandlestickShape = (props: any) => {
 
     // In Recharts custom shape, we can access the full payload.
     const { payload } = props;
-    const { high: highVal, low: lowVal, open: openVal, close: closeVal } = payload;
+    if (!payload) return null;
+    const { high: highVal = 0, low: lowVal = 0, open: openVal = 0, close: closeVal = 0 } = payload;
 
     // Helper to get Y coordinate for a value
     // This is tricky because we don't have direct access to the scale function here easily.
@@ -179,7 +189,7 @@ export function RevenueChart({ timeframe = '24h', type = 'area' }: RevenueChartP
                             fontWeight: '700'
                         }}
                         itemStyle={{ color: '#ffffff' }}
-                        formatter={(value: any) => [`${Number(value || 0).toLocaleString()}`, 'Traffic']} // eslint-disable-line @typescript-eslint/no-explicit-any
+                            formatter={(value: number) => [`${Number(value || 0).toLocaleString()}`, 'Traffic']}
                     />
                     <Area
                         type="monotone"

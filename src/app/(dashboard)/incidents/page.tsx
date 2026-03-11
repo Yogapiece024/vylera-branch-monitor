@@ -68,7 +68,7 @@ export default function IncidentsPage() {
             </div>
 
             {/* Control Bar */}
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border bg-card/30 backdrop-blur-md shadow-sm">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border bg-card/30 dark:bg-zinc-900/30 backdrop-blur-md shadow-sm">
                 <div className="relative w-full lg:max-w-md group">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground group-focus-within:text-foreground transition-colors" />
                     <input
@@ -76,7 +76,7 @@ export default function IncidentsPage() {
                         placeholder="Search by anomaly or trace ID (e.g. INC-001)..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full rounded-lg border border-border/50 bg-secondary/20 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 text-foreground placeholder:text-muted-foreground"
+                        className="w-full rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 text-foreground placeholder:text-muted-foreground"
                     />
                 </div>
 
@@ -86,13 +86,13 @@ export default function IncidentsPage() {
                         <select
                             value={severityFilter}
                             onChange={(e) => setSeverityFilter(e.target.value)}
-                            className="w-full appearance-none rounded-lg border border-border/50 bg-secondary/20 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground dark:bg-zinc-900"
+                            className="w-full appearance-none rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground"
                         >
-                            <option value="All">All Impact Levels</option>
-                            <option value="Critical">Critical</option>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
+                            <option value="All" className="dark:bg-zinc-950">All Impact Levels</option>
+                            <option value="Critical" className="dark:bg-zinc-950">Critical</option>
+                            <option value="High" className="dark:bg-zinc-950">High</option>
+                            <option value="Medium" className="dark:bg-zinc-950">Medium</option>
+                            <option value="Low" className="dark:bg-zinc-950">Low</option>
                         </select>
                         <AlertCircle className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none opacity-50" />
                     </div>
@@ -102,12 +102,12 @@ export default function IncidentsPage() {
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="w-full appearance-none rounded-lg border border-border/50 bg-secondary/20 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground dark:bg-zinc-900"
+                            className="w-full appearance-none rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground"
                         >
-                            <option value="All">All Resolution States</option>
-                            <option value="Open">Open</option>
-                            <option value="Active">Active</option>
-                            <option value="Resolved">Resolved</option>
+                            <option value="All" className="dark:bg-zinc-950">All Resolution States</option>
+                            <option value="Open" className="dark:bg-zinc-950">Open</option>
+                            <option value="Active" className="dark:bg-zinc-950">Active</option>
+                            <option value="Resolved" className="dark:bg-zinc-950">Resolved</option>
                         </select>
                         <AlertCircle className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none opacity-50" />
                     </div>
@@ -115,7 +115,7 @@ export default function IncidentsPage() {
             </div>
 
             {/* Data Table */}
-            <div className="rounded-xl border border-border bg-card/30 backdrop-blur-xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-700 shadow-sm">
+            <div className="rounded-xl border border-border dark:border-zinc-800 bg-card/30 dark:bg-zinc-950/20 backdrop-blur-xl overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-700 shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
@@ -129,7 +129,7 @@ export default function IncidentsPage() {
                                 <th className="px-6 py-5 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-border">
+                        <tbody className="divide-y divide-border dark:divide-zinc-800">
                             {INCIDENT_RECORDS
                                 .filter(incident => {
                                     const matchesSearch = incident.traceId.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -139,7 +139,7 @@ export default function IncidentsPage() {
                                     return matchesSearch && matchesSeverity && matchesStatus;
                                 })
                                 .map((incident) => (
-                                    <tr key={incident.traceId} className="group hover:bg-secondary/50 transition-all duration-200 cursor-default">
+                                    <tr key={incident.traceId} className="group hover:bg-secondary/50 dark:hover:bg-zinc-900/40 transition-all duration-200 cursor-default">
                                         <td className="px-6 py-4">
                                             <span className="font-mono text-xs font-bold text-muted-foreground tracking-tight">#{incident.traceId}</span>
                                         </td>
@@ -196,7 +196,7 @@ export default function IncidentsPage() {
                                             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{incident.timestamp}</span>
                                         </td>
                                         <td className="px-6 py-4 text-right">
-                                            <button className="px-3 py-1.5 rounded-md border border-border bg-card text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:bg-secondary hover:text-foreground transition-all active:scale-95 shadow-sm">
+                                            <button className="px-3 py-1.5 rounded-md border border-border dark:border-zinc-700 bg-card dark:bg-zinc-900 text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:bg-secondary dark:hover:bg-zinc-800 hover:text-foreground transition-all active:scale-95 shadow-sm">
                                                 Update Status
                                             </button>
                                         </td>

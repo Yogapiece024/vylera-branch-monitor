@@ -32,7 +32,7 @@ export default function ActivityPage() {
             </div>
 
             {/* Control Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border bg-card/30 backdrop-blur-md shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border border-border dark:border-zinc-800 bg-card/30 dark:bg-zinc-900/30 backdrop-blur-md shadow-sm">
                 <div className="relative w-full sm:max-w-md group">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground group-focus-within:text-foreground transition-colors" />
                     <input
@@ -40,7 +40,7 @@ export default function ActivityPage() {
                         placeholder="Search by actor, action, or target..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full rounded-lg border border-border/50 bg-secondary/20 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30"
+                        className="w-full rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 px-9 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 text-foreground"
                     />
                 </div>
 
@@ -50,18 +50,18 @@ export default function ActivityPage() {
                         <select
                             value={severityFilter}
                             onChange={(e) => setSeverityFilter(e.target.value)}
-                            className="w-full appearance-none rounded-lg border border-border/50 bg-secondary/20 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer"
+                            className="w-full appearance-none rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 pl-9 pr-10 py-2.5 text-sm outline-none transition-all focus:border-primary/50 focus:ring-1 focus:ring-primary/30 cursor-pointer text-foreground"
                         >
-                            <option value="All">All Severities</option>
-                            <option value="success">Success</option>
-                            <option value="info">Info</option>
-                            <option value="warning">Warning</option>
-                            <option value="critical">Critical</option>
+                            <option value="All" className="dark:bg-zinc-950">All Severities</option>
+                            <option value="success" className="dark:bg-zinc-950">Success</option>
+                            <option value="info" className="dark:bg-zinc-950">Info</option>
+                            <option value="warning" className="dark:bg-zinc-950">Warning</option>
+                            <option value="critical" className="dark:bg-zinc-950">Critical</option>
                         </select>
                         <ChevronDown className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
                     </div>
 
-                    <button className="p-2.5 rounded-lg border border-border/50 bg-secondary/20 hover:bg-secondary/40 transition-colors text-muted-foreground hover:text-foreground">
+                    <button className="p-2.5 rounded-lg border border-border/50 dark:border-zinc-800 bg-secondary/20 dark:bg-zinc-950/40 hover:bg-secondary/40 dark:hover:bg-zinc-800/60 transition-colors text-muted-foreground hover:text-foreground">
                         <RefreshCw className="h-4 w-4" />
                     </button>
                 </div>

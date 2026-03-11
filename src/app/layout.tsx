@@ -12,7 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import { Shell } from "@/components/layout/Shell";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {

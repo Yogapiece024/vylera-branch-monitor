@@ -68,7 +68,7 @@ export default function ActivityPage() {
             </div>
 
             {/* Timeline Container */}
-            <div className="relative rounded-xl border border-border bg-zinc-900 shadow-xl overflow-hidden min-h-[600px] animate-in fade-in zoom-in-95 duration-700">
+            <div className="relative rounded-xl border border-border bg-card/30 backdrop-blur-sm shadow-xl overflow-hidden min-h-[600px] animate-in fade-in zoom-in-95 duration-700">
                 {/* Vertical Timeline Accent line */}
                 <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-border to-transparent hidden sm:block" />
 
@@ -78,24 +78,24 @@ export default function ActivityPage() {
                             <div key={log.id} className="relative pl-12 sm:pl-16 group">
                                 {/* Dot on Timeline */}
                                 <div className={cn(
-                                    "absolute left-[29px] top-6 h-2.5 w-2.5 rounded-full z-10 ring-[6px] ring-zinc-900 transition-all duration-300 group-hover:scale-125",
+                                    "absolute left-[29px] top-6 h-2.5 w-2.5 rounded-full z-10 ring-[6px] ring-card transition-all duration-300 group-hover:scale-125",
                                     log.severity === 'success' && "bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]",
                                     log.severity === 'warning' && "bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.3)]",
-                                    log.severity === 'critical' && "bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]", // BUG: Should be rose-500
+                                    log.severity === 'critical' && "bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.3)]",
                                     log.severity === 'info' && "bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                                 )} />
 
                                 {/* Content Stack */}
                                 <div className="flex flex-col gap-1.5 transition-all duration-300 group-hover:translate-x-1">
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
                                         {log.timestamp}
                                     </span>
 
                                     <div className="flex flex-wrap items-baseline gap-x-2">
-                                        <span className="text-sm font-bold text-white tracking-tight">
+                                        <span className="text-sm font-bold text-foreground tracking-tight">
                                             {log.actor}
                                         </span>
-                                        <span className="text-sm text-zinc-400">
+                                        <span className="text-sm text-muted-foreground">
                                             {log.action}
                                         </span>
                                         <span className="text-sm font-bold text-primary">

@@ -4,18 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { BRANCH_RECORDS } from '@/lib/utils/branchData';
-import { cn } from '@/lib/utils';
 import {
     ArrowLeft,
-    Building2,
-    User,
-    MapPin,
     TrendingUp,
     Calendar,
     AlertCircle,
-    CheckCircle2,
-    Clock,
-    MoreVertical,
     Users,
     CreditCard,
     DollarSign
@@ -94,7 +87,7 @@ export default function BranchDetailPage() {
                 <div className="p-6 rounded-xl border border-border bg-card/30 backdrop-blur-sm">
                     <div className="flex items-center gap-3 mb-4 text-muted-foreground">
                         <DollarSign className="h-4 w-4 text-primary" />
-                        <p className="text-[10px] font-bold uppercase tracking-widest">Today's Revenue</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest">Today&apos;s Revenue</p>
                     </div>
                     <h2 className="text-4xl font-bold text-foreground">
                         ${branch.todayRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}
